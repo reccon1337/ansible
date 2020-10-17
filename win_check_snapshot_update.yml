@@ -1,0 +1,45 @@
+---
+- name: Windows Update Check and Snapshot
+  hosts: all
+  serial: 1
+  gather_facts: true
+  tasks:
+    - name: search for windows updates
+      win_updates:
+        category_names: ['SecurityUpdates','CriticalUpdates','UpdateRollups', 'Updates', 'DefinitionUpdates']
+        reboot: no
+        state: searched
+      register: win_updates
+       
+    - name: print variable
+      debug:
+        msg: '{{ win_updates }}'
+      when: win_updates.found_update_count
+
+    - name: Take snapshot of a VM
+      vmware_guest_snapshot:
+       datacenter: Datacenter
+       folder: /
+ # Name im Vcenter muss Namen im AWX entsprechen!
+       name: '{{ inventory_hostname }}'
+       state: present
+       snapshot_name: ansible_snap_update
+       quiesce: false
+       memory_dump: false
+      when: win_updates.found_update_count
+      delegate_to: localhost
+
+    - name: Running Windows Update
+      win_updates:
+        category_names: ['SecurityUpdates','CriticalUpdates','UpdateRollups', 'Updates', 'DefinitionUpdates']
+      register: result
+
+    # output results
+    - debug: var=result
+
+    # reboot only if required
+    - win_reboot:
+        pre_reboot_delay: 60
+        reboot_timeout: 3600
+      when: result.reboot_required
+
