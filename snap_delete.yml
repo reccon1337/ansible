@@ -1,6 +1,7 @@
 ---
 - name: Manage Snapshots
   hosts: all
+  serial: 1
   gather_facts: false
   tasks:
     - name: delete Snapshot
