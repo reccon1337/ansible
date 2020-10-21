@@ -1,6 +1,7 @@
 ---
 - name: Manage Snapshots
   hosts: all
+  ignore_errors: yes
   serial: 1
   gather_facts: false
   tasks:
