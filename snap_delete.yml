@@ -9,6 +9,6 @@
        folder: /
        # Name im Vcenter muss Namen im AWX entsprechen!
        name: '{{ inventory_hostname }}'
-       state: remove
+       state: absent
        snapshot_name: ansible_snap_update
       delegate_to: localhost
