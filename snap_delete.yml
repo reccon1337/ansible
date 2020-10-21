@@ -3,11 +3,11 @@
   hosts: all
   gather_facts: false
   tasks:
-  - name: delete Snapshot
+    - name: delete Snapshot
       vmware_guest_snapshot:
        datacenter: Datacenter
        folder: /
- # Name im Vcenter muss Namen im AWX entsprechen!
+       # Name im Vcenter muss Namen im AWX entsprechen!
        name: '{{ inventory_hostname }}'
        state: remove
        snapshot_name: ansible_snap_update
