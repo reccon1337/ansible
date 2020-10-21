@@ -1,8 +1,9 @@
 ---
-- name: Windows Update Check and Snapshot
+- name: Manage Snapshots
   hosts: all
   gather_facts: false
-  - name: Take snapshot of a VM
+  tasks:
+  - name: delete Snapshot
       vmware_guest_snapshot:
        datacenter: Datacenter
        folder: /
