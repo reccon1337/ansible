@@ -1,0 +1,13 @@
+---
+- name: Windows Update Check and Snapshot
+  hosts: all
+  gather_facts: false
+  - name: Take snapshot of a VM
+      vmware_guest_snapshot:
+       datacenter: Datacenter
+       folder: /
+ # Name im Vcenter muss Namen im AWX entsprechen!
+       name: '{{ inventory_hostname }}'
+       state: remove
+       snapshot_name: ansible_snap_update
+      delegate_to: localhost
