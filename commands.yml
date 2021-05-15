@@ -19,7 +19,6 @@
         - vtp mode transparent
         - spanning-tree mode rapid-pvst
         - spanning-tree extend system-id
-      ios_config:
         lines:
         - logging synchronous
         parents: line con 0
