@@ -1,0 +1,29 @@
+- name: General Config
+  gather_facts: no
+  hosts: all
+
+  tasks:
+    - name: line
+      ignore_errors: yes
+      ignore_unreachable: yes
+      ios_config:
+        lines:
+        - login authentication console
+        parents: line con 0
+
+    - name: line2
+      ignore_errors: yes
+      ignore_unreachable: yes
+      ios_config:
+        lines:
+        - transport input ssh
+        parents: line vty 0 4
+
+    - name: line3
+      ignore_errors: yes
+      ignore_unreachable: yes
+      ios_config:
+        lines:
+        - transport input ssh
+        parents: line vty 5 15
+        save_when: modified

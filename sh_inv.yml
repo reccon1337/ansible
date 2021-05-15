@@ -1,0 +1,7 @@
+- name: General Config
+  hosts: all
+  gather_facts: no
+  tasks:
+  - name: show inventory
+    ios_command: 
+      commands: show inventory

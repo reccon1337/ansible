@@ -1,0 +1,12 @@
+- name: General Config
+  gather_facts: no
+  hosts: all
+
+  tasks:
+    - name: Create VLAN
+      ios_vlans:
+        config:
+          - name="{{ vlan_name }}"
+            vlan_id="{{ vlan_id }}"
+            state="active"
+        state: merged

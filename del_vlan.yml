@@ -1,0 +1,10 @@
+- name: General Config
+  gather_facts: no
+  hosts: all
+
+  tasks:
+    - name: Delete VLAN
+      ios_vlans:
+        config:
+          - vlan_id="{{ vlan_id }}"
+        state: deleted

@@ -1,0 +1,12 @@
+- name: General Config
+  gather_facts: no
+  hosts: all
+
+  tasks:
+    - name: Command
+      ignore_errors: yes
+      ignore_unreachable: yes
+      ios_config:
+        lines:
+        - logging buffered 604800 warning
+        save_when: modified
