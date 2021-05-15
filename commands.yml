@@ -9,4 +9,17 @@
       ios_config:
         lines:
         - logging buffered 604800 warning
-        save_when: modified
+        - no aaa new-model
+        - service timestamps debug datetime msec localtime show-timezone year
+        - service timestamps log datetime msec localtime show-timezone year
+        - clock timezone CET 1 0
+        - clock summer-time CEST recurring last Sun Mar 2:00 last Sun Oct 3:00
+        - ip dhcp snooping vlan 1-4094
+        - no ip dhcp snooping information option
+        - vtp mode transparent
+        - spanning-tree mode rapid-pvst
+        - spanning-tree extend system-id
+        - no ip http server
+        - no ip http secure-server
+        - logging synchronous
+        
