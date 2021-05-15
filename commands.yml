@@ -22,4 +22,4 @@
         - no ip http server
         - no ip http secure-server
         - logging synchronous
-        
+        parents: line con 0
