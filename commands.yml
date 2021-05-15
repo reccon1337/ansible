@@ -19,7 +19,5 @@
         - vtp mode transparent
         - spanning-tree mode rapid-pvst
         - spanning-tree extend system-id
-        - no ip http server
-        - no ip http secure-server
         - logging synchronous
         parents: line con 0
