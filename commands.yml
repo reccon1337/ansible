@@ -3,7 +3,7 @@
   hosts: all
 
   tasks:
-    - name: Command
+    - name: top level
       ignore_errors: yes
       ignore_unreachable: yes
       ios_config:
@@ -19,6 +19,11 @@
         - vtp mode transparent
         - spanning-tree mode rapid-pvst
         - spanning-tree extend system-id
+        
+    - name: lines
+      ignore_errors: yes
+      ignore_unreachable: yes
+      ios_config:
         lines:
         - logging synchronous
         parents: line con 0
